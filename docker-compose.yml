@@ -1,0 +1,40 @@
+version: '3'
+services: 
+
+  synaptic_site: 
+    image: zeluisap/synaptic_escola
+    container_name: synaptic_site
+    extra_hosts: 
+      - "host-docker-external:<seu_ip>"
+    environment:
+      - TZ=America/Belem
+      - MONGO_URI=mongodb://zeluis:s0laris@synaptic_mongo:27017
+    ports: 
+      - "8084:80"
+    volumes: 
+      - "./site:/var/www/html"
+  
+  synaptic_db:
+    image: mariadb
+    container_name: synaptic_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: synaptic
+      TZ: America/Belem
+    ports: 
+      - "3308:3306"
+    volumes:
+      - "./volumes/db/synaptic:/var/lib/mysql"
+    
+  synaptic_mongo:
+    image: mongo
+    container_name: synaptic_mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: zeluis
+      MONGO_INITDB_ROOT_PASSWORD: s0laris
+      TZ: America/Belem
+    volumes:
+      - "../volumes/db/mongo:/data/db"
+    ports:
+      - "27017:27017"
