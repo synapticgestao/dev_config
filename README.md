@@ -15,7 +15,9 @@
 	> docker exec -ti synaptic_site bash -c 'composer update'
 - criar pastas temporárias e de dados no sistema.
 	> mkdir site/data
+	
 	> mkdir site/public/fotos
+	
 	> mkdir -p site/module/Application/src/Application/Entity
 - atribuir permissões:
 	> sudo chmod -R 777 site/data site/public/fotos site/vendor/mpdf
@@ -23,8 +25,11 @@
 - pegar a última versão do banco em formato zip e salvar nessa pasta.
 - rodar o comando que estrai e carrega o banco (instalar o unzip).
 	> rm synaptic_db.sql
+	
 	> unzip $(ls -Art *.zip | tail -n 1)
+	
 	> docker cp synaptic_db.sql synaptic_db:/tmp
+	
 	> docker exec -ti synaptic_db bash -c 'mysql -psynaptic < /tmp/synaptic_db.sql'
 ### Acessando sistema
 - acessar o sistema no endereço: http://localhost:8084
