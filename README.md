@@ -6,7 +6,7 @@
  - criar os arquivos abaixo, a partir de seus exemplos no projeto:
 	 > cp site/config/autoload/doctrine_orm.local.example.php site/config/autoload/doctrine_orm.local.php; 
 	 
-	> cp site/config/autoload/doctrine_orm.local.example.php site/config/autoload/doctrine_orm.local.php; 
+	> cp site/config/autoload/mongo.local.example.php site/config/autoload/mongo.local.php; 
 - ajustar endereço ip do usuário, para o xdebug, no arquivo docker-compose.yml (colocar o seu ip onde está <seu_ip>, ps.: não colocar localhost, nem 127.0.0.1):
 	- "host-docker-external:<seu_ip>"
 - iniciar os containers.
